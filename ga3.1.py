@@ -168,7 +168,7 @@ def genetic_algorithm(subjects, population_size=100, generations=1000):
 
 
 # Exports the optimized schedule to an Excel file with merged cells based on duration
-def export_to_excel(schedule, filename="schedule.xlsx"):
+def export_to_excel(schedule, filename="schedule2.xlsx"):
     time_slots = [f"{hour:02d}:{minute:02d}" for hour in range(7, 21) for minute in (0, 30)]
     days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
@@ -189,7 +189,7 @@ def export_to_excel(schedule, filename="schedule.xlsx"):
         occupied_slots = schedule.get_occupied_slots(start_time, subject.duration)
         end_row = start_row + len(occupied_slots) - 1
         col = days.index(day) + 2
-        cell_value = f"{subject_code} ({room})"
+        cell_value = f"{subject_code} \n ({room})"
 
         # Merge cells based on the subject's duration
         ws.merge_cells(start_row=start_row, start_column=col, end_row=end_row, end_column=col)
